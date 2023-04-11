@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="styles\styles.css" rel="stylesheet">
+        <script src="js\scriptpage.js"></script>
+    </head>
+    <body>
+        <header>
+            <H1>Estoque de Produtos</H1>
+        </header>
+            <main>
+                <div
+                    class="Title">
+                    <h2>Controle de Estoque de Produtos</h2>
+                </div>
+
+                <div class="card">
+                <div class="lineInput">
+                    <label>Produto</label>
+                    <input type="text" id="produto" placeholder="Nome do produto">
+                </div>
+            
+                <div class="lineInput">
+                    <label>Valor</label>
+                    <input type="text" id="valor" placeholder="Valor do Produto">
+                </div>
+                    <button onclick="produto.salvar()">Salvar</button>
+                    <button onclick="produto.cancelar()">Cancelar</button>
+                </div>
+                <div class="content">
+                    <table border="3" border-radius="">
+                        <thead>
+                            <th class="center">ID</th>
+                            <th>Produto</th>
+                            <th>Valor</th>
+                            <th class="center">Ações</th>
+                        </thead>
+                        <tbody id="tbody">
+                    
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+    </body>
+</html>
