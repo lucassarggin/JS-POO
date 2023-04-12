@@ -2,13 +2,18 @@ class Produto {
     constructor() {
         this.id = 1;
         this.arrayProdutos = [];
+        this.editId = null;
     }
 
     salvar(){
         let produto = this.lerDados();
     
         if(this.validaCampos(produto)) {
-            this.adicionar(produto);
+            if(this.editId == null) {
+                this.adicionar(produto);
+            } else {
+                this.atualizar(this.editId, produto);
+            }
         }
     
         this.listaTabela();
@@ -35,10 +40,12 @@ class Produto {
 
             let imgEdit = document.createElement('img');
             imgEdit.src = 'img/editar.png';
+            imgEdit.setAttribute("onClick", "produto.preparaEditacao("+ JSON.stringify(this.arrayProdutos[i]) +")");
+
 
             let imgDelete = document.createElement('img');
             imgDelete.src = 'img/deletar-lixeira.png';
-            imgDelete.setAttribute("onClick","produto.deletar('+ this.arrayProdutos[i].id')");
+            imgDelete.setAttribute("onclick", "produto.deletar("+ this.arrayProdutos[i].id +")");
 
             td_acoes.appendChild(imgEdit);
             td_acoes.appendChild(imgDelete);
@@ -49,10 +56,32 @@ class Produto {
     }
     
     adicionar(produto){
+        produto.valor = parseFloat(produto.valor);
         this.arrayProdutos.push(produto);
         this.id++;
-    }   
+    }
 
+    atualizar(id, produto) {
+        for (let i = 0; i < this.arrayProdutos.length; i++) {
+            if(this.arrayProdutos[i].id == id) {
+                this.arrayProdutos[i].nomeProduto = produto.nomeProduto;
+                this.arrayProdutos[i].valor = produto.valor;
+            }
+            
+        }
+    }    
+
+    preparaEditacao(dados) {
+        
+        this.editId = dados.id;
+
+        document.getElementById('produto').value = dados.nomeProduto;
+        document.getElementById('valor').value = dados.valor;
+
+        document.getElementById('att').innerText = 'Atualizar';
+    
+    }
+    
     lerDados(){
         let produto = {}
 
@@ -85,10 +114,22 @@ class Produto {
     cancelar() {
         document.getElementById('produto').value = '';
         document.getElementById('valor').value = '';
+
+        document.getElementById('att').innerText = 'Salvar';
+        this.edit.id = null
     }
 
-    deletar(produto) {
-        alert('Deletado');
+    deletar(id) {
+        if(confirm('Deletar o produto do ID ' + id)){
+            let index = this.arrayProdutos.findIndex(
+                (produto) => produto.id == id
+              );
+              if (index !== -1) {
+                this.arrayProdutos.splice(index, 1);
+              }
+              this.listaTabela();
+        }
     }
 }
+
 var produto = new Produto();
