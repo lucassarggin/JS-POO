@@ -1,4 +1,4 @@
-# bot_messages_whatsapp
+# JS POO
 
 Looking to improve my repository and show my technical skills with OOP (Object Oriented Programming) and making a simple product release system.
 
