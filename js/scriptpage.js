@@ -44,7 +44,7 @@ class Produto {
 
 
             let imgDelete = document.createElement('img');
-            imgDelete.src = 'img/deletar-lixeira.png';
+            imgDelete.src = 'img/delete.png';
             imgDelete.setAttribute("onclick", "produto.deletar("+ this.arrayProdutos[i].id +")");
 
             td_acoes.appendChild(imgEdit);

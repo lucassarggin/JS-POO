@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "chrome",
+            "name": "http://C:\\Users\\Lucas Sarggin\\Documents\\JS POO\\img\\deletar-lixeira.png",
+            "request": "launch",
+            "url": "http://C:\\Users\\Lucas Sarggin\\Documents\\JS POO\\img\\deletar-lixeira.png"
+        }
+    ]
+}
